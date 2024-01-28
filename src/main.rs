@@ -23,6 +23,7 @@ fn main() {
     // Add your script directory below
     let scripts_dir: String = "".to_owned();
     let copied_file_path: String = format!("{}{}", scripts_dir, binary_file_name);
+    // NOTE: `cp` does not return a `stderr` value, but instead an `ExitStatus`
     match Command::new("cp").args([&binary_file_path[..], &copied_file_path[..]]).status() {
         Ok(status) => {
             if status.success() {
